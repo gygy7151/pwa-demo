@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA</title>
+</head>
+<body>
+    <button onclick="subscribe()">Subscribe</button>
+
+    <script>
+        addEventListener('load', async () => {
+            let sw = await navigator.serviceWorker.register('./sw.js')
+            console.log(sw)
+        })
+
+        async function subscribe() {
+            let sw = await navigator.serviceWorker.ready;
+            let push = await sw.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: 'BMcyeHj9o6fqIyW14Cyiy-yWqZ3dyvwRN82fT7vr9lcIoKFx6RaQ-gG1qejnKusLU-bnObHm4ti29mcstBKGkLA',
+            })
+            console.log(JSON.stringify(push))
+        }
+    </script>
+</body>
+</html>
