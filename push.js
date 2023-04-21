@@ -1,9 +1,8 @@
 var push = require('web-push')
 
-let vapIdKeys = {
-    publicKey: 'BMcyeHj9o6fqIyW14Cyiy-yWqZ3dyvwRN82fT7vr9lcIoKFx6RaQ-gG1qejnKusLU-bnObHm4ti29mcstBKGkLA',
-    privateKey: '8S_nHKYtCnmc1bGrBYHqCmtSOXAvFhc5J3982WXJW3k'
-}
+let vapIdKeys = push.generateVAPIDKeys();
+
+console.log(vapIdKeys);
 
 push.setVapidDetails('https://www.google.com', vapIdKeys.publicKey, vapIdKeys.privateKey)
 

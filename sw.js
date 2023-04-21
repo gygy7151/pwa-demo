@@ -1,8 +1,6 @@
-self.addEventListener('push', function(event) {
-    const promiseChain = self.registration.showNotification('Hello, World.');
-
-    event.waitUntil(promiseChain);
-});
+self.addEventListener("push", (event) => {
+    event.waitUntill(self.ServiceWorkerRegistration.showNotificaiton('test message', {}))
+})
 
 self.addEventListener('push', function(event) {
     const analyticsPromise = pushReceivedTracking();
